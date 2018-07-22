@@ -14,7 +14,7 @@ public class TestActiceMQ
 //         *   注意参数brokerURL的开头是tcp://，而不是我们通常所见的http://，端口是61616而不是我们访问ActiceMQ
 //         *   后台管理页面时所使用的8161。
 //         */
-//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://127.0.0.1:61616");
+//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.200.128:61616");
 //        // 2.使用ConnectionFactory对象来创建一个Connection对象
 //        Connection connection = connectionFactory.createConnection();
 //        // 3.开启连接，需要调用Connection对象的start方法
@@ -47,7 +47,7 @@ public class TestActiceMQ
 //    @Test
 //    public void testQueueConsumer() throws Exception {
 //        // 1.创建一个连接工厂对象
-//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://127.0.0.1:61616");
+//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.200.128:61616");
 //        // 2.使用连接工厂对象创建一个连接
 //        Connection connection = connectionFactory.createConnection();
 //        // 开启连接
@@ -108,7 +108,7 @@ public class TestActiceMQ
 //    @Test
 //    public void testTopicProducer() throws Exception {
 //        // 创建一个连接工厂对象
-//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://127.0.0.1:61616");
+//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.200.128:61616");
 //        // 使用连接工厂对象来创建一个连接
 //        Connection connection = connectionFactory.createConnection();
 //        // 开启连接
@@ -132,7 +132,7 @@ public class TestActiceMQ
 //    @Test
 //    public void testTopicConsumer() throws Exception {
 //        // 创建一个连接工厂对象
-//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://127.0.0.1:61616");
+//        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.200.128:61616");
 //        // 使用工厂对象创建一个连接
 //        Connection connection = connectionFactory.createConnection();
 //        // 开启连接
