@@ -58,7 +58,7 @@ public class HtmlGenListener implements MessageListener
             for (int i = 0; i < 3; i++) {
                 Thread.sleep(1000); // 休眠一秒
                 tbItem = itemService.getItemById(itemId);
-                // 如果获取到了商品基本信息，那就退出循环
+                // 如果获取到商品基本信息，那就退出循环
                 if (tbItem != null) {
                     break;
                 }
