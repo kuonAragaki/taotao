@@ -1,5 +1,6 @@
 package com.shopping.sso.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.shopping.common.pojo.ShopResult;
 import com.shopping.common.utils.CookieUtils;
 import com.shopping.common.utils.ExceptionUtil;
@@ -9,6 +10,7 @@ import com.shopping.sso.service.UserRegisterService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,6 +86,7 @@ public class UserController {
 
     /**
      * 说明：用token查询用户信息
+     * 适用于spring4.1以上版本
      */
     @RequestMapping("/token/{token}")
     @ResponseBody
@@ -105,6 +108,33 @@ public class UserController {
             return mappingJacksonValue;
         }
     }
+
+//    /**
+//     * 说明：用token查询用户信息
+//     */
+//    @RequestMapping(value = "/token/{token}",method = RequestMethod.GET,
+//            //指定返回响应数据的content-type
+//            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    @ResponseBody
+//    public String getUserByToken(@PathVariable String token,String callback){
+//        ShopResult result = null;
+//        try {
+//            result = userLoginService.getUserByToken(token);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            result = ShopResult.build(500,ExceptionUtil.getStackTrace(e));
+//        }
+//
+//        //判断是否为jsonp调用
+//        if(StringUtils.isBlank(callback)){
+//            return JSON.toJSONString(result);
+//        }else {
+//            MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
+//            mappingJacksonValue.setJsonpFunction(callback);
+//            return callback + "("+JSON.toJSONString(result) + ");";
+//        }
+//    }
+
 
     @RequestMapping("/logout/{token}")
     @ResponseBody
