@@ -11,5 +11,7 @@ import com.shopping.order.service.pojo.OrderInfo;
  * 2018/7/11 22:15
  */
 public interface OrderService {
-    public ShopResult createOrder(OrderInfo orderInfo);
+    ShopResult createOrder(OrderInfo orderInfo);
+
+    void updateOrderPay(String orderId);
 }

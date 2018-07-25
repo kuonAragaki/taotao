@@ -7,6 +7,7 @@ import com.shopping.mapper.TbOrderShippingMapper;
 import com.shopping.order.service.OrderService;
 import com.shopping.order.service.jedis.JedisClient;
 import com.shopping.order.service.pojo.OrderInfo;
+import com.shopping.pojo.TbOrder;
 import com.shopping.pojo.TbOrderItem;
 import com.shopping.pojo.TbOrderShipping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,17 @@ public class OrderServiceImpl implements OrderService {
         orderShippingMapper.insert(orderShipping);
         //返回订单号
         return ShopResult.ok(orderId);
+    }
+
+    /**
+     * 说明：付款成功后更新付款状态
+     */
+    @Override
+    public void updateOrderPay(String orderId) {
+        //查询订单信息
+        TbOrder tbOrder = orderMapper.selectByPrimaryKey(orderId);
+        //修改付款状态
+        tbOrder.setStatus(2);
+        orderMapper.updateByPrimaryKey(tbOrder);
     }
 }

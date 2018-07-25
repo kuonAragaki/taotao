@@ -82,11 +82,18 @@ public class OrderController {
         String orderId = result.getData().toString();
         model.addAttribute("orderId",orderId);
         model.addAttribute("payment",orderInfo.getPayment());
+
         //预计送达时间是三天后
         DateTime dateTime = new DateTime();
         dateTime = dateTime.plusDays(3);
         model.addAttribute("date",dateTime.toString("yyyy-MM-dd"));
         //返回逻辑视图
+        if(orderInfo.getPaymentType() == 4){
+            //payid为支付方式，1代表货到付款，4代表在线支付
+            //payid为4时进入付款页面
+            return "pay";
+        }
+        //货到付款时直接返回成功页面
         return "success";
     }
 
