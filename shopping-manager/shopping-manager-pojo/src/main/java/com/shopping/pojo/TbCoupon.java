@@ -1,6 +1,5 @@
 package com.shopping.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbCoupon {
@@ -18,7 +17,7 @@ public class TbCoupon {
 
     private Date endTime;
 
-    private BigDecimal money;
+    private String money;
 
     private Integer status;
 
@@ -26,7 +25,7 @@ public class TbCoupon {
 
     private Date createTime;
 
-    private BigDecimal fullMoney;
+    private String fullMoney;
 
     public Long getId() {
         return id;
@@ -84,12 +83,12 @@ public class TbCoupon {
         this.endTime = endTime;
     }
 
-    public BigDecimal getMoney() {
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(BigDecimal money) {
-        this.money = money;
+    public void setMoney(String money) {
+        this.money = money == null ? null : money.trim();
     }
 
     public Integer getStatus() {
@@ -116,11 +115,11 @@ public class TbCoupon {
         this.createTime = createTime;
     }
 
-    public BigDecimal getFullMoney() {
+    public String getFullMoney() {
         return fullMoney;
     }
 
-    public void setFullMoney(BigDecimal fullMoney) {
-        this.fullMoney = fullMoney;
+    public void setFullMoney(String fullMoney) {
+        this.fullMoney = fullMoney == null ? null : fullMoney.trim();
     }
 }

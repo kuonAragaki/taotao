@@ -1,6 +1,5 @@
 package com.shopping.pojo;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -366,52 +365,62 @@ public class TbCouponLogsExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountEqualTo(BigDecimal value) {
+        public Criteria andOrderOriginalAmountEqualTo(String value) {
             addCriterion("order_original_amount =", value, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountNotEqualTo(BigDecimal value) {
+        public Criteria andOrderOriginalAmountNotEqualTo(String value) {
             addCriterion("order_original_amount <>", value, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountGreaterThan(BigDecimal value) {
+        public Criteria andOrderOriginalAmountGreaterThan(String value) {
             addCriterion("order_original_amount >", value, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andOrderOriginalAmountGreaterThanOrEqualTo(String value) {
             addCriterion("order_original_amount >=", value, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountLessThan(BigDecimal value) {
+        public Criteria andOrderOriginalAmountLessThan(String value) {
             addCriterion("order_original_amount <", value, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andOrderOriginalAmountLessThanOrEqualTo(String value) {
             addCriterion("order_original_amount <=", value, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountIn(List<BigDecimal> values) {
+        public Criteria andOrderOriginalAmountLike(String value) {
+            addCriterion("order_original_amount like", value, "orderOriginalAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderOriginalAmountNotLike(String value) {
+            addCriterion("order_original_amount not like", value, "orderOriginalAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderOriginalAmountIn(List<String> values) {
             addCriterion("order_original_amount in", values, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountNotIn(List<BigDecimal> values) {
+        public Criteria andOrderOriginalAmountNotIn(List<String> values) {
             addCriterion("order_original_amount not in", values, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andOrderOriginalAmountBetween(String value1, String value2) {
             addCriterion("order_original_amount between", value1, value2, "orderOriginalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderOriginalAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andOrderOriginalAmountNotBetween(String value1, String value2) {
             addCriterion("order_original_amount not between", value1, value2, "orderOriginalAmount");
             return (Criteria) this;
         }
@@ -426,52 +435,62 @@ public class TbCouponLogsExample {
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountEqualTo(BigDecimal value) {
+        public Criteria andCouponAmountEqualTo(String value) {
             addCriterion("coupon_amount =", value, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountNotEqualTo(BigDecimal value) {
+        public Criteria andCouponAmountNotEqualTo(String value) {
             addCriterion("coupon_amount <>", value, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountGreaterThan(BigDecimal value) {
+        public Criteria andCouponAmountGreaterThan(String value) {
             addCriterion("coupon_amount >", value, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andCouponAmountGreaterThanOrEqualTo(String value) {
             addCriterion("coupon_amount >=", value, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountLessThan(BigDecimal value) {
+        public Criteria andCouponAmountLessThan(String value) {
             addCriterion("coupon_amount <", value, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andCouponAmountLessThanOrEqualTo(String value) {
             addCriterion("coupon_amount <=", value, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountIn(List<BigDecimal> values) {
+        public Criteria andCouponAmountLike(String value) {
+            addCriterion("coupon_amount like", value, "couponAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponAmountNotLike(String value) {
+            addCriterion("coupon_amount not like", value, "couponAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponAmountIn(List<String> values) {
             addCriterion("coupon_amount in", values, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountNotIn(List<BigDecimal> values) {
+        public Criteria andCouponAmountNotIn(List<String> values) {
             addCriterion("coupon_amount not in", values, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCouponAmountBetween(String value1, String value2) {
             addCriterion("coupon_amount between", value1, value2, "couponAmount");
             return (Criteria) this;
         }
 
-        public Criteria andCouponAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCouponAmountNotBetween(String value1, String value2) {
             addCriterion("coupon_amount not between", value1, value2, "couponAmount");
             return (Criteria) this;
         }
@@ -486,52 +505,62 @@ public class TbCouponLogsExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountEqualTo(BigDecimal value) {
+        public Criteria andOrderFinalAmountEqualTo(String value) {
             addCriterion("order_final_amount =", value, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountNotEqualTo(BigDecimal value) {
+        public Criteria andOrderFinalAmountNotEqualTo(String value) {
             addCriterion("order_final_amount <>", value, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountGreaterThan(BigDecimal value) {
+        public Criteria andOrderFinalAmountGreaterThan(String value) {
             addCriterion("order_final_amount >", value, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andOrderFinalAmountGreaterThanOrEqualTo(String value) {
             addCriterion("order_final_amount >=", value, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountLessThan(BigDecimal value) {
+        public Criteria andOrderFinalAmountLessThan(String value) {
             addCriterion("order_final_amount <", value, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andOrderFinalAmountLessThanOrEqualTo(String value) {
             addCriterion("order_final_amount <=", value, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountIn(List<BigDecimal> values) {
+        public Criteria andOrderFinalAmountLike(String value) {
+            addCriterion("order_final_amount like", value, "orderFinalAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderFinalAmountNotLike(String value) {
+            addCriterion("order_final_amount not like", value, "orderFinalAmount");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderFinalAmountIn(List<String> values) {
             addCriterion("order_final_amount in", values, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountNotIn(List<BigDecimal> values) {
+        public Criteria andOrderFinalAmountNotIn(List<String> values) {
             addCriterion("order_final_amount not in", values, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andOrderFinalAmountBetween(String value1, String value2) {
             addCriterion("order_final_amount between", value1, value2, "orderFinalAmount");
             return (Criteria) this;
         }
 
-        public Criteria andOrderFinalAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andOrderFinalAmountNotBetween(String value1, String value2) {
             addCriterion("order_final_amount not between", value1, value2, "orderFinalAmount");
             return (Criteria) this;
         }

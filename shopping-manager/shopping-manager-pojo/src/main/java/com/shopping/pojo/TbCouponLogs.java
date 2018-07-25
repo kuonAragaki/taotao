@@ -1,6 +1,5 @@
 package com.shopping.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbCouponLogs {
@@ -12,11 +11,11 @@ public class TbCouponLogs {
 
     private String orderId;
 
-    private BigDecimal orderOriginalAmount;
+    private String orderOriginalAmount;
 
-    private BigDecimal couponAmount;
+    private String couponAmount;
 
-    private BigDecimal orderFinalAmount;
+    private String orderFinalAmount;
 
     private Date createTime;
 
@@ -54,28 +53,28 @@ public class TbCouponLogs {
         this.orderId = orderId == null ? null : orderId.trim();
     }
 
-    public BigDecimal getOrderOriginalAmount() {
+    public String getOrderOriginalAmount() {
         return orderOriginalAmount;
     }
 
-    public void setOrderOriginalAmount(BigDecimal orderOriginalAmount) {
-        this.orderOriginalAmount = orderOriginalAmount;
+    public void setOrderOriginalAmount(String orderOriginalAmount) {
+        this.orderOriginalAmount = orderOriginalAmount == null ? null : orderOriginalAmount.trim();
     }
 
-    public BigDecimal getCouponAmount() {
+    public String getCouponAmount() {
         return couponAmount;
     }
 
-    public void setCouponAmount(BigDecimal couponAmount) {
-        this.couponAmount = couponAmount;
+    public void setCouponAmount(String couponAmount) {
+        this.couponAmount = couponAmount == null ? null : couponAmount.trim();
     }
 
-    public BigDecimal getOrderFinalAmount() {
+    public String getOrderFinalAmount() {
         return orderFinalAmount;
     }
 
-    public void setOrderFinalAmount(BigDecimal orderFinalAmount) {
-        this.orderFinalAmount = orderFinalAmount;
+    public void setOrderFinalAmount(String orderFinalAmount) {
+        this.orderFinalAmount = orderFinalAmount == null ? null : orderFinalAmount.trim();
     }
 
     public Date getCreateTime() {

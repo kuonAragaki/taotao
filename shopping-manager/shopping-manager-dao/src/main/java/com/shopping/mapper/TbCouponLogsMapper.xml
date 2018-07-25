@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.kuon.mapper.TbCouponLogsMapper" >
-  <resultMap id="BaseResultMap" type="org.kuon.pojo.TbCouponLogs" >
+<mapper namespace="com.shopping.mapper.TbCouponLogsMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.pojo.TbCouponLogs" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="coupon_receive_id" property="couponReceiveId" jdbcType="BIGINT" />
     <result column="order_id" property="orderId" jdbcType="VARCHAR" />
-    <result column="order_original_amount" property="orderOriginalAmount" jdbcType="DECIMAL" />
-    <result column="coupon_amount" property="couponAmount" jdbcType="DECIMAL" />
-    <result column="order_final_amount" property="orderFinalAmount" jdbcType="DECIMAL" />
+    <result column="order_original_amount" property="orderOriginalAmount" jdbcType="VARCHAR" />
+    <result column="coupon_amount" property="couponAmount" jdbcType="VARCHAR" />
+    <result column="order_final_amount" property="orderFinalAmount" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
@@ -74,7 +74,7 @@
     id, user_id, coupon_receive_id, order_id, order_original_amount, coupon_amount, order_final_amount, 
     create_time, status
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.kuon.pojo.TbCouponLogsExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.pojo.TbCouponLogsExample" >
     select
     <if test="distinct" >
       distinct
@@ -98,23 +98,23 @@
     delete from tb_coupon_logs
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="org.kuon.pojo.TbCouponLogsExample" >
+  <delete id="deleteByExample" parameterType="com.shopping.pojo.TbCouponLogsExample" >
     delete from tb_coupon_logs
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.kuon.pojo.TbCouponLogs" >
+  <insert id="insert" parameterType="com.shopping.pojo.TbCouponLogs" >
     insert into tb_coupon_logs (id, user_id, coupon_receive_id, 
       order_id, order_original_amount, coupon_amount, 
       order_final_amount, create_time, status
       )
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{couponReceiveId,jdbcType=BIGINT}, 
-      #{orderId,jdbcType=VARCHAR}, #{orderOriginalAmount,jdbcType=DECIMAL}, #{couponAmount,jdbcType=DECIMAL}, 
-      #{orderFinalAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      #{orderId,jdbcType=VARCHAR}, #{orderOriginalAmount,jdbcType=VARCHAR}, #{couponAmount,jdbcType=VARCHAR}, 
+      #{orderFinalAmount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.kuon.pojo.TbCouponLogs" >
+  <insert id="insertSelective" parameterType="com.shopping.pojo.TbCouponLogs" >
     insert into tb_coupon_logs
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -159,13 +159,13 @@
         #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="orderOriginalAmount != null" >
-        #{orderOriginalAmount,jdbcType=DECIMAL},
+        #{orderOriginalAmount,jdbcType=VARCHAR},
       </if>
       <if test="couponAmount != null" >
-        #{couponAmount,jdbcType=DECIMAL},
+        #{couponAmount,jdbcType=VARCHAR},
       </if>
       <if test="orderFinalAmount != null" >
-        #{orderFinalAmount,jdbcType=DECIMAL},
+        #{orderFinalAmount,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -175,7 +175,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.kuon.pojo.TbCouponLogsExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.shopping.pojo.TbCouponLogsExample" resultType="java.lang.Integer" >
     select count(*) from tb_coupon_logs
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -197,13 +197,13 @@
         order_id = #{record.orderId,jdbcType=VARCHAR},
       </if>
       <if test="record.orderOriginalAmount != null" >
-        order_original_amount = #{record.orderOriginalAmount,jdbcType=DECIMAL},
+        order_original_amount = #{record.orderOriginalAmount,jdbcType=VARCHAR},
       </if>
       <if test="record.couponAmount != null" >
-        coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+        coupon_amount = #{record.couponAmount,jdbcType=VARCHAR},
       </if>
       <if test="record.orderFinalAmount != null" >
-        order_final_amount = #{record.orderFinalAmount,jdbcType=DECIMAL},
+        order_final_amount = #{record.orderFinalAmount,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -222,16 +222,16 @@
       user_id = #{record.userId,jdbcType=BIGINT},
       coupon_receive_id = #{record.couponReceiveId,jdbcType=BIGINT},
       order_id = #{record.orderId,jdbcType=VARCHAR},
-      order_original_amount = #{record.orderOriginalAmount,jdbcType=DECIMAL},
-      coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
-      order_final_amount = #{record.orderFinalAmount,jdbcType=DECIMAL},
+      order_original_amount = #{record.orderOriginalAmount,jdbcType=VARCHAR},
+      coupon_amount = #{record.couponAmount,jdbcType=VARCHAR},
+      order_final_amount = #{record.orderFinalAmount,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.kuon.pojo.TbCouponLogs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.pojo.TbCouponLogs" >
     update tb_coupon_logs
     <set >
       <if test="userId != null" >
@@ -244,13 +244,13 @@
         order_id = #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="orderOriginalAmount != null" >
-        order_original_amount = #{orderOriginalAmount,jdbcType=DECIMAL},
+        order_original_amount = #{orderOriginalAmount,jdbcType=VARCHAR},
       </if>
       <if test="couponAmount != null" >
-        coupon_amount = #{couponAmount,jdbcType=DECIMAL},
+        coupon_amount = #{couponAmount,jdbcType=VARCHAR},
       </if>
       <if test="orderFinalAmount != null" >
-        order_final_amount = #{orderFinalAmount,jdbcType=DECIMAL},
+        order_final_amount = #{orderFinalAmount,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -261,14 +261,14 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.kuon.pojo.TbCouponLogs" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.pojo.TbCouponLogs" >
     update tb_coupon_logs
     set user_id = #{userId,jdbcType=BIGINT},
       coupon_receive_id = #{couponReceiveId,jdbcType=BIGINT},
       order_id = #{orderId,jdbcType=VARCHAR},
-      order_original_amount = #{orderOriginalAmount,jdbcType=DECIMAL},
-      coupon_amount = #{couponAmount,jdbcType=DECIMAL},
-      order_final_amount = #{orderFinalAmount,jdbcType=DECIMAL},
+      order_original_amount = #{orderOriginalAmount,jdbcType=VARCHAR},
+      coupon_amount = #{couponAmount,jdbcType=VARCHAR},
+      order_final_amount = #{orderFinalAmount,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}

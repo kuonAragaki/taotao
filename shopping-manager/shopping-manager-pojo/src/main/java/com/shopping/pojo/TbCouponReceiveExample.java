@@ -1,6 +1,5 @@
 package com.shopping.pojo;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -296,52 +295,62 @@ public class TbCouponReceiveExample {
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyEqualTo(BigDecimal value) {
+        public Criteria andCouponMoneyEqualTo(String value) {
             addCriterion("coupon_money =", value, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyNotEqualTo(BigDecimal value) {
+        public Criteria andCouponMoneyNotEqualTo(String value) {
             addCriterion("coupon_money <>", value, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyGreaterThan(BigDecimal value) {
+        public Criteria andCouponMoneyGreaterThan(String value) {
             addCriterion("coupon_money >", value, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andCouponMoneyGreaterThanOrEqualTo(String value) {
             addCriterion("coupon_money >=", value, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyLessThan(BigDecimal value) {
+        public Criteria andCouponMoneyLessThan(String value) {
             addCriterion("coupon_money <", value, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andCouponMoneyLessThanOrEqualTo(String value) {
             addCriterion("coupon_money <=", value, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyIn(List<BigDecimal> values) {
+        public Criteria andCouponMoneyLike(String value) {
+            addCriterion("coupon_money like", value, "couponMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponMoneyNotLike(String value) {
+            addCriterion("coupon_money not like", value, "couponMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andCouponMoneyIn(List<String> values) {
             addCriterion("coupon_money in", values, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyNotIn(List<BigDecimal> values) {
+        public Criteria andCouponMoneyNotIn(List<String> values) {
             addCriterion("coupon_money not in", values, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCouponMoneyBetween(String value1, String value2) {
             addCriterion("coupon_money between", value1, value2, "couponMoney");
             return (Criteria) this;
         }
 
-        public Criteria andCouponMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andCouponMoneyNotBetween(String value1, String value2) {
             addCriterion("coupon_money not between", value1, value2, "couponMoney");
             return (Criteria) this;
         }
@@ -416,52 +425,62 @@ public class TbCouponReceiveExample {
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyEqualTo(BigDecimal value) {
+        public Criteria andFullMoneyEqualTo(String value) {
             addCriterion("full_money =", value, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyNotEqualTo(BigDecimal value) {
+        public Criteria andFullMoneyNotEqualTo(String value) {
             addCriterion("full_money <>", value, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyGreaterThan(BigDecimal value) {
+        public Criteria andFullMoneyGreaterThan(String value) {
             addCriterion("full_money >", value, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andFullMoneyGreaterThanOrEqualTo(String value) {
             addCriterion("full_money >=", value, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyLessThan(BigDecimal value) {
+        public Criteria andFullMoneyLessThan(String value) {
             addCriterion("full_money <", value, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andFullMoneyLessThanOrEqualTo(String value) {
             addCriterion("full_money <=", value, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyIn(List<BigDecimal> values) {
+        public Criteria andFullMoneyLike(String value) {
+            addCriterion("full_money like", value, "fullMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFullMoneyNotLike(String value) {
+            addCriterion("full_money not like", value, "fullMoney");
+            return (Criteria) this;
+        }
+
+        public Criteria andFullMoneyIn(List<String> values) {
             addCriterion("full_money in", values, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyNotIn(List<BigDecimal> values) {
+        public Criteria andFullMoneyNotIn(List<String> values) {
             addCriterion("full_money not in", values, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andFullMoneyBetween(String value1, String value2) {
             addCriterion("full_money between", value1, value2, "fullMoney");
             return (Criteria) this;
         }
 
-        public Criteria andFullMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andFullMoneyNotBetween(String value1, String value2) {
             addCriterion("full_money not between", value1, value2, "fullMoney");
             return (Criteria) this;
         }

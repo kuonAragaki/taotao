@@ -1,6 +1,7 @@
 package com.shopping.coupon.service.jedis.impl;
 
-import com.shopping.order.service.jedis.JedisClient;
+
+import com.shopping.coupon.service.jedis.JedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisCluster;
 

@@ -1,10 +1,9 @@
 package com.shopping.mapper;
 
-import org.apache.ibatis.annotations.Param;
-import org.kuon.pojo.TbCoupon;
-import org.kuon.pojo.TbCouponExample;
-
+import com.shopping.pojo.TbCoupon;
+import com.shopping.pojo.TbCouponExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbCouponMapper {
     int countByExample(TbCouponExample example);

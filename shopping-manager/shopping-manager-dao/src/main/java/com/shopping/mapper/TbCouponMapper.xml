@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.kuon.mapper.TbCouponMapper" >
-  <resultMap id="BaseResultMap" type="org.kuon.pojo.TbCoupon" >
+<mapper namespace="com.shopping.mapper.TbCouponMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.pojo.TbCoupon" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="region_id" property="regionId" jdbcType="BIGINT" />
     <result column="type" property="type" jdbcType="INTEGER" />
@@ -9,11 +9,11 @@
     <result column="img" property="img" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="money" property="money" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="remarks" property="remarks" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="full_money" property="fullMoney" jdbcType="DECIMAL" />
+    <result column="full_money" property="fullMoney" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,7 +77,7 @@
     id, region_id, type, name, img, start_time, end_time, money, status, remarks, create_time, 
     full_money
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.kuon.pojo.TbCouponExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.pojo.TbCouponExample" >
     select
     <if test="distinct" >
       distinct
@@ -101,13 +101,13 @@
     delete from tb_coupon
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="org.kuon.pojo.TbCouponExample" >
+  <delete id="deleteByExample" parameterType="com.shopping.pojo.TbCouponExample" >
     delete from tb_coupon
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.kuon.pojo.TbCoupon" >
+  <insert id="insert" parameterType="com.shopping.pojo.TbCoupon" >
     insert into tb_coupon (id, region_id, type, 
       name, img, start_time, 
       end_time, money, status, 
@@ -115,11 +115,11 @@
       )
     values (#{id,jdbcType=BIGINT}, #{regionId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{money,jdbcType=DECIMAL}, #{status,jdbcType=INTEGER}, 
-      #{remarks,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{fullMoney,jdbcType=DECIMAL}
+      #{endTime,jdbcType=TIMESTAMP}, #{money,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{fullMoney,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.kuon.pojo.TbCoupon" >
+  <insert id="insertSelective" parameterType="com.shopping.pojo.TbCoupon" >
     insert into tb_coupon
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -182,7 +182,7 @@
         #{endTime,jdbcType=TIMESTAMP},
       </if>
       <if test="money != null" >
-        #{money,jdbcType=DECIMAL},
+        #{money,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -194,11 +194,11 @@
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fullMoney != null" >
-        #{fullMoney,jdbcType=DECIMAL},
+        #{fullMoney,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.kuon.pojo.TbCouponExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.shopping.pojo.TbCouponExample" resultType="java.lang.Integer" >
     select count(*) from tb_coupon
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -229,7 +229,7 @@
         end_time = #{record.endTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.money != null" >
-        money = #{record.money,jdbcType=DECIMAL},
+        money = #{record.money,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
@@ -241,7 +241,7 @@
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.fullMoney != null" >
-        full_money = #{record.fullMoney,jdbcType=DECIMAL},
+        full_money = #{record.fullMoney,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -257,16 +257,16 @@
       img = #{record.img,jdbcType=VARCHAR},
       start_time = #{record.startTime,jdbcType=TIMESTAMP},
       end_time = #{record.endTime,jdbcType=TIMESTAMP},
-      money = #{record.money,jdbcType=DECIMAL},
+      money = #{record.money,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       remarks = #{record.remarks,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      full_money = #{record.fullMoney,jdbcType=DECIMAL}
+      full_money = #{record.fullMoney,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.kuon.pojo.TbCoupon" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.pojo.TbCoupon" >
     update tb_coupon
     <set >
       <if test="regionId != null" >
@@ -288,7 +288,7 @@
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
       <if test="money != null" >
-        money = #{money,jdbcType=DECIMAL},
+        money = #{money,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -300,12 +300,12 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fullMoney != null" >
-        full_money = #{fullMoney,jdbcType=DECIMAL},
+        full_money = #{fullMoney,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.kuon.pojo.TbCoupon" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.pojo.TbCoupon" >
     update tb_coupon
     set region_id = #{regionId,jdbcType=BIGINT},
       type = #{type,jdbcType=INTEGER},
@@ -313,11 +313,11 @@
       img = #{img,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
-      money = #{money,jdbcType=DECIMAL},
+      money = #{money,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       remarks = #{remarks,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      full_money = #{fullMoney,jdbcType=DECIMAL}
+      full_money = #{fullMoney,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

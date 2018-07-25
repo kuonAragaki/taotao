@@ -14,6 +14,11 @@
             <artifactId>shopping-manager-pojo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.shopping</groupId>
+            <artifactId>shopping-order-interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build/>

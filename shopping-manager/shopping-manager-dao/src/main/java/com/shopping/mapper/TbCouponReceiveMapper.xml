@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.kuon.mapper.TbCouponReceiveMapper" >
-  <resultMap id="BaseResultMap" type="org.kuon.pojo.TbCouponReceive" >
+<mapper namespace="com.shopping.mapper.TbCouponReceiveMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.pojo.TbCouponReceive" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="user_id" property="userId" jdbcType="BIGINT" />
     <result column="coupon_id" property="couponId" jdbcType="BIGINT" />
-    <result column="coupon_money" property="couponMoney" jdbcType="DECIMAL" />
+    <result column="coupon_money" property="couponMoney" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="full_money" property="fullMoney" jdbcType="DECIMAL" />
+    <result column="full_money" property="fullMoney" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -71,7 +71,7 @@
   <sql id="Base_Column_List" >
     id, user_id, coupon_id, coupon_money, create_time, full_money, status
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.kuon.pojo.TbCouponReceiveExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shopping.pojo.TbCouponReceiveExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,21 +95,21 @@
     delete from tb_coupon_receive
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="org.kuon.pojo.TbCouponReceiveExample" >
+  <delete id="deleteByExample" parameterType="com.shopping.pojo.TbCouponReceiveExample" >
     delete from tb_coupon_receive
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.kuon.pojo.TbCouponReceive" >
+  <insert id="insert" parameterType="com.shopping.pojo.TbCouponReceive" >
     insert into tb_coupon_receive (id, user_id, coupon_id, 
       coupon_money, create_time, full_money, 
       status)
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{couponId,jdbcType=BIGINT}, 
-      #{couponMoney,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{fullMoney,jdbcType=DECIMAL}, 
+      #{couponMoney,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{fullMoney,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.kuon.pojo.TbCouponReceive" >
+  <insert id="insertSelective" parameterType="com.shopping.pojo.TbCouponReceive" >
     insert into tb_coupon_receive
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -145,20 +145,20 @@
         #{couponId,jdbcType=BIGINT},
       </if>
       <if test="couponMoney != null" >
-        #{couponMoney,jdbcType=DECIMAL},
+        #{couponMoney,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fullMoney != null" >
-        #{fullMoney,jdbcType=DECIMAL},
+        #{fullMoney,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.kuon.pojo.TbCouponReceiveExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.shopping.pojo.TbCouponReceiveExample" resultType="java.lang.Integer" >
     select count(*) from tb_coupon_receive
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -177,13 +177,13 @@
         coupon_id = #{record.couponId,jdbcType=BIGINT},
       </if>
       <if test="record.couponMoney != null" >
-        coupon_money = #{record.couponMoney,jdbcType=DECIMAL},
+        coupon_money = #{record.couponMoney,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.fullMoney != null" >
-        full_money = #{record.fullMoney,jdbcType=DECIMAL},
+        full_money = #{record.fullMoney,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
@@ -198,15 +198,15 @@
     set id = #{record.id,jdbcType=BIGINT},
       user_id = #{record.userId,jdbcType=BIGINT},
       coupon_id = #{record.couponId,jdbcType=BIGINT},
-      coupon_money = #{record.couponMoney,jdbcType=DECIMAL},
+      coupon_money = #{record.couponMoney,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      full_money = #{record.fullMoney,jdbcType=DECIMAL},
+      full_money = #{record.fullMoney,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.kuon.pojo.TbCouponReceive" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.pojo.TbCouponReceive" >
     update tb_coupon_receive
     <set >
       <if test="userId != null" >
@@ -216,13 +216,13 @@
         coupon_id = #{couponId,jdbcType=BIGINT},
       </if>
       <if test="couponMoney != null" >
-        coupon_money = #{couponMoney,jdbcType=DECIMAL},
+        coupon_money = #{couponMoney,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="fullMoney != null" >
-        full_money = #{fullMoney,jdbcType=DECIMAL},
+        full_money = #{fullMoney,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -230,13 +230,13 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.kuon.pojo.TbCouponReceive" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.pojo.TbCouponReceive" >
     update tb_coupon_receive
     set user_id = #{userId,jdbcType=BIGINT},
       coupon_id = #{couponId,jdbcType=BIGINT},
-      coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      coupon_money = #{couponMoney,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      full_money = #{fullMoney,jdbcType=DECIMAL},
+      full_money = #{fullMoney,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
