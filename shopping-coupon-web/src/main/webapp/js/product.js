@@ -966,7 +966,12 @@ var Refresh = {init: function() {
         a.after($(l.process(t)).fadeIn()), s.find(".btns .btn-reply em").html(e), this.currReply.hasClass("reply-btn-lz") || this.currReply.parents(".replay-form").eq(0).hide(), this.currReply.parents(".reply-input").find("input").val(""), this.bindReply()
     },getData: function(t, e, i, s) {
         var a = this;
-        this.wrap = t, this.type = e || 0, this.page = i, this.sType = s || 3, this.commRateLoaded = !1, this.url = "http://club.jd.com/productpage/p-{skuId}-s-{commType}-t-{sortType}-p-{currPage}.html", this.url = this.url.replace("{skuId}", this.sku).replace("{commType}", this.type).replace("{sortType}", this.sType).replace("{currPage}", this.page), $.ajax({url: this.url,dataType: "jsonp",success: function(t) {
+        this.wrap = t, this.type = e || 0, this.page = i, this.sType = s || 3, this.commRateLoaded = !1, 
+        //this.url = "http://club.jd.com/productpage/p-{skuId}-s-{commType}-t-{sortType}-p-{currPage}.html", 
+        this.url = "/js/comment.json", 
+        this.url = this.url.replace("{skuId}", this.sku).replace("{commType}", this.type).replace("{sortType}", 
+        this.sType).replace("{currPage}", this.page), 
+        $.ajax({url: this.url,dataType: "json",success: function(t) {
                 a.setData(t)
             }})
     },setABTest: function(t) {
@@ -1403,10 +1408,10 @@ var Refresh = {init: function() {
             },onEnd: function() {
                 r()
             }}), 3 == i) {
-            if (e.css("height", 5).html("<div>a</div>"), $("#promises,#state").hide(), Consult.getData(0, $("#consult-0")), !CommentListNew.loadFirstPage) {
-                var s = pageConfig.product.isFlashPurchase ? 2 : isAreaProduct ? 1 : 3;
-                CommentListNew.getData($("#comment-0"), 0, 0, s)
-            }
+//            if (e.css("height", 5).html("<div>a</div>"), $("#promises,#state").hide(), Consult.getData(0, $("#consult-0")), !CommentListNew.loadFirstPage) {
+//                var s = pageConfig.product.isFlashPurchase ? 2 : isAreaProduct ? 1 : 3;
+//                CommentListNew.getData($("#comment-0"), 0, 0, s)
+//            }
             $("#product-detail .mt").floatNav({fixedClass: "nav-fixed",targetEle: "#consult",anchor: "#product-detail",range: 0,onStart: function() {
                     $("#nav-minicart").show()
                 },onEnd: function() {

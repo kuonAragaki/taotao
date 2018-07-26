@@ -1,8 +1,9 @@
 package com.shopping.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbCouponLogs {
+public class TbCouponLogs implements Serializable {
     private Long id;
 
     private Long userId;
