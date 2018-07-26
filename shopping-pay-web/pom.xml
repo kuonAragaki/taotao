@@ -23,6 +23,12 @@
             <artifactId>shopping-order-interface</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- 依赖shopping-coupon-interface -->
+        <dependency>
+            <groupId>com.shopping</groupId>
+            <artifactId>shopping-coupon-interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <!-- Spring -->
         <dependency>

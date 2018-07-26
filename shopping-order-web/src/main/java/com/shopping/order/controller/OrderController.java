@@ -1,10 +1,13 @@
 package com.shopping.order.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.shopping.common.pojo.ShopResult;
 import com.shopping.common.utils.CookieUtils;
+import com.shopping.coupon.service.CouponService;
 import com.shopping.order.service.OrderService;
 import com.shopping.order.service.pojo.OrderInfo;
+import com.shopping.pojo.TbCoupon;
 import com.shopping.pojo.TbItem;
 import com.shopping.pojo.TbUser;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -35,6 +39,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private CouponService couponService;
 
     /**
      * 说明：从Cookie中取出购物车列表
@@ -66,12 +73,15 @@ public class OrderController {
         // 从数据库中查询支付方式列表
         // 传递给页面
         request.setAttribute("cartList",cartList);
+        //查询用户的可用优惠券
+        List<TbCoupon> coupons = couponService.getTbCouponsByUserId(user.getId());
+        request.setAttribute("coupons",coupons);
         //返回一个逻辑视图
         return "order-cart";
     }
 
     @RequestMapping(value = "/order/create",method = RequestMethod.POST)
-    public String createOrder(OrderInfo orderInfo, Model model,HttpServletRequest request){
+    public String createOrder(OrderInfo orderInfo, Model model,HttpServletRequest request, Long couponId,String orderOriginalAmount){
         //取用户id
         TbUser user = (TbUser) request.getAttribute("user");
         orderInfo.setUserId(user.getId());
@@ -82,7 +92,9 @@ public class OrderController {
         String orderId = result.getData().toString();
         model.addAttribute("orderId",orderId);
         model.addAttribute("payment",orderInfo.getPayment());
-
+        //生成优惠券使用信息
+        orderInfo.setOrderId(orderId);
+        couponService.useTbCoupon(user.getId(),couponId,orderInfo,orderOriginalAmount);
         //预计送达时间是三天后
         DateTime dateTime = new DateTime();
         dateTime = dateTime.plusDays(3);

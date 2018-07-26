@@ -40,21 +40,6 @@ public class CouponController {
         return "coupon-list";
     }
 
-    /**
-     * 说明：查看用户可用优惠券
-     */
-    @RequestMapping("/coupon/list")
-    @ResponseBody
-    public String userCoupons(HttpServletRequest request){
-        //取用户id
-        TbUser user = (TbUser) request.getAttribute("user");
-        //执行查询
-        List<TbCoupon> coupons = couponService.getTbCouponsByUserId(user.getId());
-        //将结果转为json字符串
-        String json = JSON.toJSONString(coupons);
-        //返回结果
-        return json;
-    }
 
     /**
      * 说明：领取优惠券

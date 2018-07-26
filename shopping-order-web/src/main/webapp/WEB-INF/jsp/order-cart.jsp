@@ -60,6 +60,9 @@
 			<input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.image}"/>
 		</c:forEach>
 		<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
+		<input type="hidden" name="orderOriginalAmount" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
+		<input type="hidden" name="couponAmount"/>
+		<input type="hidden" name="couponId"/>
 		<input type="hidden" name="orderShipping.receiverName" value="入云龙"/>
 		<input type="hidden" name="orderShipping.receiverMobile" value="15891588888"/>
 		<input type="hidden" name="orderShipping.receiverState" value="北京"/>
@@ -264,7 +267,41 @@
 </div>
 </div>  
 </div>
-</div>			
+</div>
+<script type="text/javascript">
+	function couponToggle() {
+		$("#coupon").toggle();
+    }
+    function useCoupon(money,id) {
+	    $("#couponMoney").html(money);
+		var newPrice = ${totalPrice / 100}-money;
+        $("#sumPayPriceIds").html(newPrice);
+        $("#payPriceIds").html(newPrice);
+        $("input[name=couponAmount]").val(money);
+        $("input[name=payment]").val(newPrice);
+        $("input[name=couponId]").val(id);
+    }
+</script>
+<div class="step-tit">
+	<h3><a href="javascript:couponToggle()">优惠券</a></h3>
+	<ul id="coupon">
+		<c:forEach items="${coupons}" var="c">
+			<li class="item-book" bookid="11078102" style="float: left">
+				<div class="p-img">
+					<img width="130" height="120" data-img="1" data-lazyload="${c.img}" />
+				</div>
+				<div class="p-name" align="center">
+						${c.name}
+				</div>
+				<div class="p-price" align="center">
+
+					<strong  style="margin-left: 0px">￥${c.money }</strong>
+				</div>
+				<div class="service"  align="center"><input type="radio" name="coupon" value="${c.id}" onclick="useCoupon(${c.money},${c.id})">使用</input> </div>
+			</li>
+		</c:forEach>
+	</ul>
+</div>
 <!--  /widget/invoice-step/invoice-step.tpl -->
 <div class="step-tit">
 	<h3>发票信息</h3>
@@ -290,8 +327,12 @@
 						￥0.00</em>
 				</div>
 				<div class="list">
+					<span>优惠券：</span> <em class="price">
+					-￥<c  id="couponMoney">0.00</c></em>
+				</div>
+				<div class="list">
 					<span>应付总额：</span> <em class="price" id="sumPayPriceId">
-						￥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></em>
+					￥<c id="sumPayPriceIds"><fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></c></em>
 				</div>
 			</div>
 			<div class="clr"></div>
@@ -312,7 +353,7 @@
           		  id="order-submit"	onclick="$('#orderForm').submit()">
           	提交订单
           </button>
-                    <span class="total">应付总额：<strong id="payPriceId">￥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></strong>
+                    <span class="total">应付总额：<strong id="payPriceId">￥<c id="payPriceIds"><fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></c></strong>
           </span>
                     <span id="checkCodeDiv"></span>
           <div class="checkout-submit-tip" id="changeAreaAndPrice" style="display: none;">

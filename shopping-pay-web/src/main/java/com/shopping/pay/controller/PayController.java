@@ -1,5 +1,6 @@
 package com.shopping.pay.controller;
 
+import com.shopping.coupon.service.CouponService;
 import com.shopping.order.service.OrderService;
 import com.shopping.pay.utils.PaymentUtil ;
 import org.joda.time.DateTime;
@@ -10,14 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PayController {
+
 	@Autowired
 	private OrderService orderService;
+
+	@Autowired
+	private CouponService couponService;
 	/**
 	 * 进行支付
 	 * @return
 	 */
 	@RequestMapping("/pay")
 	public String pay(String pdFrpId,String orderId,String payment,Model model){
+//		payment = "0.01";
 		String p0_Cmd = "Buy";		//业务类型
 		String p1_MerId = "10001126856";	//商户编号(我们用的是易宝支付测试的商户编号，也就是意味各位支付钱支付给易宝支付的测试账号了)
 		String p2_Order = orderId;	//商户订单号。为 ””时，易宝支付会自动生成随机的商户订单号
@@ -62,6 +68,8 @@ public class PayController {
 		orderService.updateOrderPay(r6_Order);
 		model.addAttribute("payment", r3_Amt);	//支付成功的金额
 		model.addAttribute("orderId", r6_Order);	//订单编号
+		//修改优惠券使用状态
+		couponService.updateLog(r6_Order);
 		//预计送达时间是三天后
 		DateTime dateTime = new DateTime();
 		dateTime = dateTime.plusDays(3);

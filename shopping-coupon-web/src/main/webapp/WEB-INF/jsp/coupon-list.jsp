@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Cache-Control" content="max-age=300" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>${query} - 商品搜索 - shop</title>
+<title>优惠券列表</title>
 <meta name="Keywords" content="java,shopjava" />
 <meta name="description" content="在shop中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
 <link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
@@ -44,7 +44,7 @@
 			<c:forEach items="${coupons}" var="c">
 				<li class="item-book" bookid="11078102">
 					<div class="p-img">
-						<img width="130" height="160" data-img="1" data-lazyload="${c.img}" />
+						<img width="130" height="120" data-img="1" data-lazyload="${c.img}" />
 					</div>
 					<div class="p-name" align="center">
 							${c.name}
@@ -53,10 +53,7 @@
 
 						<strong  style="margin-left: 100px">￥${c.money }</strong>
 					</div>
-					<div class="service"  align="center"><button onclick="receive(${c.id})">立即领取</button> </div>
-					<div class="extra">
-						<span class="star" style="margin-left: 72px"><span class="star-white"><span class="star-yellow h5">&nbsp;</span></span></span>
-					</div>
+					<div class="service"  align="center" style="height: 100px;"><button onclick="receive(${c.id})">立即领取</button> </div>
 				</li>
 			</c:forEach>
 		</ul></div>
