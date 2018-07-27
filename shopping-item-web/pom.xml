@@ -23,6 +23,12 @@
             <artifactId>shopping-manager-interface</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!-- 依赖shopping-sk-interface -->
+        <dependency>
+            <groupId>com.shopping</groupId>
+            <artifactId>shopping-sk-interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>

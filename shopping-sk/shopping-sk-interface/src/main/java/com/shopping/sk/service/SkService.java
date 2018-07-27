@@ -1,7 +1,10 @@
 package com.shopping.sk.service;
 
 import com.shopping.common.pojo.ShopResult;
+import com.shopping.pojo.TbSeckill;
 import com.shopping.sk.service.pojo.OrderInfo;
+
+import java.util.List;
 
 /**
  * 说明：订单业务层接口
@@ -11,9 +14,13 @@ import com.shopping.sk.service.pojo.OrderInfo;
  * 2018/7/11 22:15
  */
 public interface SkService {
-    public ShopResult createOrder(OrderInfo orderInfo);
+    ShopResult createOrder(OrderInfo orderInfo);
 
-    public void startSK();
+    void startSK();
 
-    public void endSK();
+    void endSK();
+
+    List<TbSeckill> getSKList();
+
+    TbSeckill getSKById(Long itemId);
 }

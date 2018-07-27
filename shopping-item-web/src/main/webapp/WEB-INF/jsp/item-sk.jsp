@@ -11,6 +11,10 @@
 	<link rel="stylesheet" type="text/css" href="/css/taotao.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="/css/pshow.css" media="all" />
 	<script src="js/jquery-1.6.4.js"></script>
+	<%--&lt;%&ndash;jQery文件,务必在bootstrap.min.js之前引入&ndash;%&gt;--%>
+	<%--<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>--%>
+	<%--&lt;%&ndash;jQuery countDown倒计时插件&ndash;%&gt;--%>
+	<%--<script src="http://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>--%>
 	<script type="text/javascript">
     	window.pageConfig = {
 			compatible: true,
@@ -41,11 +45,11 @@
             }
             return "上午 "+hour;
         }
-        var end = "2018/07/13,14:42:00";
-        var end2 = "2018/07/13,15:40:00";
+        var end = "${startTime}";
+        var end2 = "${endTime}";
         function countDown(){//传入终止时间
             //获取当前时间和截止时间的毫秒值
-            var endTime=new Date(end).getTime();
+            var endTime=end;
             var nowTime=new Date().getTime();
             //计算时间差秒数
             var countTime=(endTime-nowTime)/1000;
@@ -57,6 +61,7 @@
             var seconds=parseInt(countTime%60)
             if(countTime<=0) {
                 countDown2();
+                $("#jd-price").html('￥<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${sk.seckillPrice / 100 }"/>');
             } else {
                 $('#countDown').html("距离秒杀开始:"+hour+"小时 "+minutes+"分钟 "+seconds+" 秒");
                 //alert("倒计时:"+checktime(day)+"天 "+checkTime(hour)+"小时 "+checkTime(minutes)+"分钟 "+checkTime(seconds)+" 秒")
@@ -65,7 +70,7 @@
         }
         function countDown2(){//传入终止时间
             //获取当前时间和截止时间的毫秒值
-            var endTime=new Date(end2).getTime();
+            var endTime=end2;
             var nowTime=new Date().getTime();
             //计算时间差秒数
             var countTime=(endTime-nowTime)/1000;
@@ -77,6 +82,7 @@
             var seconds=parseInt(countTime%60)
             if(countTime<=0) {
                 $('#countDown').html("秒杀结束");
+                $("#jd-price").html('￥<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${sk.originPrice / 100 }"/>');
             } else {
                 $('#countDown').html("距离秒杀结束:"+hour+"小时 "+minutes+"分钟 "+seconds+" 秒");
                 //alert("倒计时:"+checktime(day)+"天 "+checkTime(hour)+"小时 "+checkTime(minutes)+"分钟 "+checkTime(seconds)+" 秒")
@@ -181,7 +187,7 @@
 								<a class="btn-add" href="javascript:;" onclick="setAmount.add('#buy-num')">增加数量</a>
 								<input class="text" id="buy-num" value="1" onkeyup="setAmount.modify('#buy-num');"/>
 						</div>
-						<span style="margin-left: 150px">仅剩${item.num}件</span>
+						<span style="margin-left: 150px">仅剩${sk.num}件</span>
 					</div>
 				</li>
 		        <li id="choose-result"><div class="dt"></div><div class="dd"></div></li>
@@ -307,7 +313,6 @@
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 <script type="text/javascript" src="/js/lib-v1.js"></script>
 <script type="text/javascript" src="/js/product.js"></script>
 <script type="text/javascript" src="/js/iplocation_server.js"></script>
@@ -360,5 +365,17 @@
 		location.href="http://localhost:8102/cart/add/${item.id}.html?num=" + num;
 	}
 </script>
+<%--<script src="/js/seckill.js" type="text/javascript"></script>--%>
+<%--<script type="text/javascript">--%>
+    <%--$(function () {--%>
+        <%--//使用EL表达式传入参数--%>
+        <%--seckill.detail.init({--%>
+            <%--seckillId:${item.id},--%>
+            <%--startTime:${sk.startTime.time},//毫秒--%>
+            <%--endTime:${sk.endTime.time},--%>
+            <%--now:${now}--%>
+        <%--});--%>
+    <%--})--%>
+<%--</script>--%>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.shopping.sk.controller;
 
 import com.shopping.common.pojo.ShopResult;
 import com.shopping.pojo.TbItem;
+import com.shopping.pojo.TbSeckill;
 import com.shopping.pojo.TbUser;
 import com.shopping.service.ItemService;
 import com.shopping.sk.service.SkService;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 说明：订单确认页面控制层
@@ -86,6 +89,28 @@ public class SkController {
         model.addAttribute("date",dateTime.toString("yyyy-MM-dd"));
         //返回逻辑视图
         return "success";
+    }
+
+    /**
+     * 说明：获取秒杀列表
+     */
+    @RequestMapping("/skList")
+    public String skList(Model model){
+        List<Map<String,Object>> list = new ArrayList<>();
+        List<TbSeckill> skList = skService.getSKList();
+        //循环查询商品信息
+        if(skList != null && skList.size() > 0){
+            for (int i = 0; i < skList.size(); i++) {
+                TbSeckill seckill =  skList.get(i);
+                TbItem item = itemService.getItemById(seckill.getItemId());
+                Map<String, Object> map = new HashMap<>();
+                map.put("seckill",seckill);
+                map.put("item",item);
+                list.add(map);
+            }
+        }
+        model.addAttribute("list",list);
+        return "sk-list";
     }
 
 }

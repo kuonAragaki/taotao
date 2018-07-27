@@ -3,9 +3,8 @@ package com.shopping.sk.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.shopping.common.pojo.ShopResult;
 import com.shopping.mapper.TbItemMapper;
-import com.shopping.pojo.TbItem;
-import com.shopping.pojo.TbOrderItem;
-import com.shopping.pojo.TbOrderShipping;
+import com.shopping.mapper.TbSeckillMapper;
+import com.shopping.pojo.*;
 import com.shopping.sk.service.SkService;
 import com.shopping.sk.service.jedis.JedisClient;
 import com.shopping.sk.service.pojo.OrderInfo;
@@ -15,6 +14,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +30,9 @@ import java.util.List;
 public class SkServiceImpl implements SkService {
     @Autowired
     private TbItemMapper itemMapper;
+
+    @Autowired
+    private TbSeckillMapper seckillMapper;
 
     @Autowired
     private JedisClient jedisClient;
@@ -54,10 +58,33 @@ public class SkServiceImpl implements SkService {
     @Value("${ORDER_DETAIL_GEN_KEY}")
     private String ORDER_DETAIL_GEN_KEY;
 
-    @Scheduled(cron = "0 42 14 * * ?")
+    /**
+     * 说明：定时开启秒杀
+     */
+    @Scheduled(cron = "0 25 14 * * ?")
     @Override
     public void startSK() {
         System.out.println("-----开启秒杀-----");
+//        try {
+//        //根据秒杀时间查找商品秒杀信息
+//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+//        Date today = new Date();
+//        Date date = null;
+//        date = df.parse("2018/7/27 14:25:00");
+//        System.out.println("date====="+today.getYear()+"-"+today.getMonth()+"-"+today.getDay()+" 14:25:00");
+//        //创建查询条件
+//        TbSeckillExample example = new TbSeckillExample();
+//        TbSeckillExample.Criteria criteria = example.createCriteria();
+//        criteria.andStartTimeEqualTo(date);
+//        //执行查询
+//        List<TbSeckill> list = seckillMapper.selectByExample(example);
+//        System.out.println("list====="+list);
+//        if(list != null && list.size() > 0){
+//            System.out.println("title====="+list.get(0).getTitle());
+//        }
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         //向redis中存入商品件数
         jedisClient.set("sk:"+SK_ID+":number",SK_NUMBER.toString());
         //查询商品
@@ -74,7 +101,10 @@ public class SkServiceImpl implements SkService {
         itemMapper.updateByPrimaryKey(item);
     }
 
-    @Scheduled(cron = "0 40 15 * * ?")
+    /**
+     * 说明：定时结束秒杀
+     */
+    @Scheduled(cron = "0 28 14 * * ?")
     @Override
     public void endSK() {
         System.out.println("-----结束秒杀-----");
@@ -94,6 +124,19 @@ public class SkServiceImpl implements SkService {
         itemMapper.updateByPrimaryKey(item);
     }
 
+    @Override
+    public List<TbSeckill> getSKList() {
+        return seckillMapper.selectByExample(null);
+    }
+
+    @Override
+    public TbSeckill getSKById(Long itemId) {
+        return seckillMapper.selectByPrimaryKey(itemId);
+    }
+
+    /**
+     * 说明：创建订单
+     */
     @Override
     public ShopResult createOrder(OrderInfo orderInfo) {
         //查询redis中的商品件数

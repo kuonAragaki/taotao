@@ -24,5 +24,6 @@
     <dubbo:application name="shopping-item-web"/>
     <dubbo:registry protocol="zookeeper" address="192.168.200.128:2181"/>
     <dubbo:reference interface="com.shopping.service.ItemService" id="itemService" />
+    <dubbo:reference interface="com.shopping.sk.service.SkService" id="skService" />
 
 </beans>

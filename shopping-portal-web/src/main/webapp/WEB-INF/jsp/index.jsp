@@ -28,66 +28,66 @@
         }
     </style>
     <script type="text/javascript">
-        function checkHour(hour){//12小时制
-            if(hour>12){
-                return "下午 "+(hour-12);
-            }
-            return "上午 "+hour;
-        }
-        function showTime(){
-            var date=new Date();
-
-
-            var weekDay=["星期日","星期一","星期二","星期三","星期日四","星期五","星期六"];
-            $("#time").html(date.getFullYear()+"年 " +(date.getMonth()+1)+"月"+date.getDate()+"日 "+weekDay[date.getDay()]+"<br/>"+checkHour(date.getHours())+"时"+date.getMinutes()+"分"+date.getSeconds()+"秒"
-            );
-            setTimeout('showTime()',500);
-        }
-        var end = "2018/07/12,15:48:00";
-        var end2 = "2018/07/12,15:49:00";
-        function countDown(){//传入终止时间
-            //获取当前时间和截止时间的毫秒值
-            var endTime=new Date(end).getTime();
-            var nowTime=new Date().getTime();
-            //计算时间差秒数
-            var countTime=(endTime-nowTime)/1000;
-            //计算时间差天数
-            var day=parseInt(countTime/(60*60*24));
-            //计算时间差小时数
-            var hour=parseInt(countTime/(60*60)%24);
-            var minutes=parseInt(countTime/60%60);
-            var seconds=parseInt(countTime%60)
-            if(countTime<=0) {
-                countDown2()
-            } else {
-                $('#countDown').html("开始:"+hour+"小时 "+minutes+"分钟 "+seconds+" 秒");
-                //alert("倒计时:"+checktime(day)+"天 "+checkTime(hour)+"小时 "+checkTime(minutes)+"分钟 "+checkTime(seconds)+" 秒")
-                setTimeout("countDown()",1000);
-            }
-        }
-        function countDown2(){//传入终止时间
-            //获取当前时间和截止时间的毫秒值
-            var endTime=new Date(end2).getTime();
-            var nowTime=new Date().getTime();
-            //计算时间差秒数
-            var countTime=(endTime-nowTime)/1000;
-            //计算时间差天数
-            var day=parseInt(countTime/(60*60*24));
-            //计算时间差小时数
-            var hour=parseInt(countTime/(60*60)%24);
-            var minutes=parseInt(countTime/60%60);
-            var seconds=parseInt(countTime%60)
-            if(countTime<=0) {
-                $('#countDown').html("秒杀结束");
-            } else {
-                $('#countDown').html("结束:"+hour+"小时 "+minutes+"分钟 "+seconds+" 秒");
-                //alert("倒计时:"+checktime(day)+"天 "+checkTime(hour)+"小时 "+checkTime(minutes)+"分钟 "+checkTime(seconds)+" 秒")
-                setTimeout("countDown2()",1000);
-            }
-        }
-        $(function () {
-            countDown(),showTime()
-        })
+        // function checkHour(hour){//12小时制
+        //     if(hour>12){
+        //         return "下午 "+(hour-12);
+        //     }
+        //     return "上午 "+hour;
+        // }
+        // function showTime(){
+        //     var date=new Date();
+        //
+        //
+        //     var weekDay=["星期日","星期一","星期二","星期三","星期日四","星期五","星期六"];
+        //     $("#time").html(date.getFullYear()+"年 " +(date.getMonth()+1)+"月"+date.getDate()+"日 "+weekDay[date.getDay()]+"<br/>"+checkHour(date.getHours())+"时"+date.getMinutes()+"分"+date.getSeconds()+"秒"
+        //     );
+        //     setTimeout('showTime()',500);
+        // }
+        // var end = "2018/07/12,15:48:00";
+        // var end2 = "2018/07/12,15:49:00";
+        // function countDown(){//传入终止时间
+        //     //获取当前时间和截止时间的毫秒值
+        //     var endTime=new Date(end).getTime();
+        //     var nowTime=new Date().getTime();
+        //     //计算时间差秒数
+        //     var countTime=(endTime-nowTime)/1000;
+        //     //计算时间差天数
+        //     var day=parseInt(countTime/(60*60*24));
+        //     //计算时间差小时数
+        //     var hour=parseInt(countTime/(60*60)%24);
+        //     var minutes=parseInt(countTime/60%60);
+        //     var seconds=parseInt(countTime%60)
+        //     if(countTime<=0) {
+        //         countDown2()
+        //     } else {
+        //         $('#countDown').html("开始:"+hour+"小时 "+minutes+"分钟 "+seconds+" 秒");
+        //         //alert("倒计时:"+checktime(day)+"天 "+checkTime(hour)+"小时 "+checkTime(minutes)+"分钟 "+checkTime(seconds)+" 秒")
+        //         setTimeout("countDown()",1000);
+        //     }
+        // }
+        // function countDown2(){//传入终止时间
+        //     //获取当前时间和截止时间的毫秒值
+        //     var endTime=new Date(end2).getTime();
+        //     var nowTime=new Date().getTime();
+        //     //计算时间差秒数
+        //     var countTime=(endTime-nowTime)/1000;
+        //     //计算时间差天数
+        //     var day=parseInt(countTime/(60*60*24));
+        //     //计算时间差小时数
+        //     var hour=parseInt(countTime/(60*60)%24);
+        //     var minutes=parseInt(countTime/60%60);
+        //     var seconds=parseInt(countTime%60)
+        //     if(countTime<=0) {
+        //         $('#countDown').html("秒杀结束");
+        //     } else {
+        //         $('#countDown').html("结束:"+hour+"小时 "+minutes+"分钟 "+seconds+" 秒");
+        //         //alert("倒计时:"+checktime(day)+"天 "+checkTime(hour)+"小时 "+checkTime(minutes)+"分钟 "+checkTime(seconds)+" 秒")
+        //         setTimeout("countDown2()",1000);
+        //     }
+        // }
+        // $(function () {
+        //     countDown(),showTime()
+        // })
     </script>
 </head>
 <body>
@@ -367,7 +367,7 @@
             <div class="tab-arrow"><b></b></div>
             <div class="sm sm2 fore1 curr"  data-widget="tab-item" data-tag="1622" clstag="homepage|keycount|home2013|18d">
                 <div class="smt">
-                    <h3><a href="http://127.0.0.1:8098/item/sk/153114184337229.html">秒杀</a><span style="color:lightskyblue;font-size:1px;text-align:center;" id="countDown"></span></h3>
+                    <h3>大家电<span style="color:lightskyblue;font-size:1px;text-align:center;" id="countDown"></span></h3>
                 </div>
                 <div class="smc" data-widget="tab-content">
                     <div class="loading-style1"><b></b>加载中，请稍候...</div>
